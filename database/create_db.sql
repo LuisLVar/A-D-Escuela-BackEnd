@@ -1,4 +1,3 @@
-
 DROP DATABASE IF EXISTS control_notas;
 CREATE DATABASE IF NOT EXISTS control_notas;
 
@@ -8,7 +7,7 @@ CREATE TABLE escuela
 (
 	escuela 		INTEGER NOT NULL AUTO_INCREMENT,
     nombre_oficial	VARCHAR(80) NOT NULL,
-    dirección 		VARCHAR(100) NOT NULL,
+    dirección 	  	VARCHAR(100) NOT NULL,
     telefono 		VARCHAR(50) NOT NULL,
     
     CONSTRAINT escuela_pk 
@@ -16,8 +15,8 @@ CREATE TABLE escuela
 );
  
 CREATE TABLE tipo_personal (
-    tipo_personal		INTEGER NOT NULL,
-    nombre_tipo_personal	VARCHAR(50) NOT NULL,
+    tipo_personal	INTEGER NOT NULL AUTO_INCREMENT,
+    nombre      	VARCHAR(50) NOT NULL,
     
     CONSTRAINT tipo_personal_pk 
 		PRIMARY KEY ( tipo_personal )
@@ -49,8 +48,8 @@ CREATE TABLE personal (
 
 CREATE TABLE grado 
 (
-    grado			INTEGER NOT NULL AUTO_INCREMENT,
-    nombre_grado  	VARCHAR(50) NOT NULL,
+    grado	INTEGER NOT NULL AUTO_INCREMENT,
+    nombre	VARCHAR(50) NOT NULL,
     
     CONSTRAINT grado_pk 
 		PRIMARY KEY (grado)
