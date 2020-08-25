@@ -11,6 +11,9 @@ class ApiRoutes{
 
     config():void {
         //Aqui van las referencias a los get y post.
+        this.router.get('/getCiclos', apiController.getCiclos);
+        this.router.post('/crearCiclo', apiController.crearCiclo);
+        this.router.post('/eliminarCiclo', apiController.eliminarCiclo);   
     }
 
 }
