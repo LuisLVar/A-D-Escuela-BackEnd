@@ -14,15 +14,15 @@ public async getCiclos(req: Request, res: Response) {
 
 public async crearCiclo(req: Request, res: Response) {
   let emp = req.body;
-  const ciclo = await pool.query('insert into ciclo (anio) values (?)',[emp.year]);
-      res.json(ciclo);
+  await pool.query('insert into ciclo (anio) values (?)',[emp.year]);
+  res.json({estado: true});
   
 }
 
 public async eliminarCiclo(req: Request, res: Response) {
   let emp = req.body;
-  const ciclo = await pool.query('delete from ciclo where ciclo=?',[emp.ciclo]);
-  res.json(ciclo);
+  await pool.query('delete from ciclo where ciclo=?',[emp.ciclo]);
+  res.json({estado: true});
 }
 
 
