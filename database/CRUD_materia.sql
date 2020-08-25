@@ -94,3 +94,22 @@ BEGIN
         END IF;
 END;
 $$
+
+# FUNCTION eliminar_materia
+USE control_notas
+DELIMITER $$
+CREATE FUNCTION eliminar_materia
+(
+    p_materia INT
+)
+RETURNS JSON DETERMINISTIC
+BEGIN
+	IF (SELECT materia FROM materia WHERE p_materia = materia) IS NOT NULL THEN
+		DELETE FROM materia 
+			WHERE p_materia = materia;
+         RETURN '{"estado": 200, "mensaje": "Operación completada con exito."}';   
+	ELSE 
+		RETURN '{"error": 400, "mensaje": "No se puedo encontrar el registro en la tabla materia."}';
+    END IF;
+END;
+$$
