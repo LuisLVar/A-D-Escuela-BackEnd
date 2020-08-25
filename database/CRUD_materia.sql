@@ -56,3 +56,41 @@ BEGIN
     END IF;
 END;
 $$
+
+# FUNCTION actualizar_materia
+USE control_notas;
+DELIMITER $$
+CREATE FUNCTION actualizar_materia
+(
+	p_materia	 VARCHAR(70),
+    p_nombre     VARCHAR(70),
+	p_contenido  VARCHAR(70)
+)
+RETURNS JSON DETERMINISTIC
+BEGIN
+		DECLARE existe INT DEFAULT 0;
+        
+        IF (SELECT nombre FROM materia 
+			WHERE materia = p_materia) IS NULL THEN
+			SET existe = 0;
+		ELSE 
+			SET existe = 1;
+		END IF;
+        
+        IF existe THEN
+			IF p_nombre IS NOT NULL THEN
+				UPDATE materia
+					SET 
+						nombre= p_nombre,
+						contenido = p_contenido
+					WHERE
+						p_materia = materia;
+				RETURN '{"estado": 200, "mensaje": "Operación completada con exito."}';
+			ELSE 
+				RETURN '{"estado": 500, "mensaje": "Error: El nombre es un valor obligatorio"}';
+			END IF;
+        ELSE
+			RETURN '{"estado": 500, "mensaje": "Error: No existe la materia que se desea actualizar."}';
+        END IF;
+END;
+$$
