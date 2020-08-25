@@ -128,9 +128,9 @@ CREATE TABLE alumno (
 );
 
 CREATE TABLE inscripcion (
-    fecha            DATE NOT NULL,
-    seccion  INTEGER NOT NULL,
-    alumno    INTEGER NOT NULL,
+    fecha	DATE NOT NULL,
+    seccion	INTEGER NOT NULL,
+    alumno	INTEGER NOT NULL,
     
     CONSTRAINT inscripcion_pk 
 		PRIMARY KEY ( seccion, alumno ),
