@@ -33,3 +33,26 @@ BEGIN
         END IF;
 END;
 $$
+
+# FUNCTION obtener_materia
+USE control_notas
+DELIMITER $$
+CREATE FUNCTION obtener_materia
+(
+    p_materia INT
+)
+RETURNS JSON DETERMINISTIC
+BEGIN
+
+	IF (SELECT materia FROM materia WHERE p_materia = materia) IS NOT NULL THEN
+	RETURN (
+		SELECT 
+			JSON_OBJECT('nombre', nombre, 'contenido', contenido)
+			FROM materia
+				WHERE p_materia = materia
+            );
+	ELSE 
+		RETURN '{"error": 400, "mensaje": "No se puedo encontrar el registro en la tabla materia."}';
+    END IF;
+END;
+$$
