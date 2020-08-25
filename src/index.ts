@@ -4,6 +4,7 @@ import morgan from 'morgan'; //se pueden ver las peticiones que se hacen
 import cors from 'cors';
 import indexRoutes from './routes/indexRoutes';
 import apiRoutes from './routes/apiRoutes';
+import seccionRoutes from './routes/seccion.routes';
 
 class Server {//esta clase iniciara al servidor
 
@@ -25,6 +26,7 @@ class Server {//esta clase iniciara al servidor
     routes():void {//para conf las rutas de mi servidor
         this.app.use('/', indexRoutes);
         this.app.use('/api', apiRoutes);
+        this.app.use('/seccion',seccionRoutes);
     }
     start():void {//inicializar el servidor -> para que el servidor empiece a escuchar
         this.app.listen(this.app.get('port'),() => {  
