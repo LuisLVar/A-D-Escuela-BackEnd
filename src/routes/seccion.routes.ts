@@ -12,7 +12,12 @@ class SeccionRoutes{
 
     config():void{
         // direcciones
-        this.router.get('/', seccionController.seccion);
+        // this.router.get('/', seccionController.seccion);
+        this.router.get('/', seccionController.list);
+        this.router.get('/:id', seccionController.getOne);
+        this.router.post('/', seccionController.create);
+        this.router.put('/:id', seccionController.update);
+        this.router.delete('/:id',seccionController.delete);
     }
 
 
