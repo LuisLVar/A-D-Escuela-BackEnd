@@ -44,6 +44,83 @@ var database_1 = __importDefault(require("../database"));
 var ApiController = /** @class */ (function () {
     function ApiController() {
     }
+    //Materia
+    ApiController.prototype.insertarMateria = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var materia;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, database_1.default.query('insertar_materia(?, ?)', [req.body.nombre, req.body.contenido])];
+                    case 1:
+                        materia = _a.sent();
+                        res.json(materia);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ApiController.prototype.obtenerMateria = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var id, materia;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        id = req.params.id;
+                        return [4 /*yield*/, database_1.default.query('obtener_materia(?)', [id])];
+                    case 1:
+                        materia = _a.sent();
+                        res.json(materia);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ApiController.prototype.obtenerMaterias = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var materia;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, database_1.default.query('select * from materia')];
+                    case 1:
+                        materia = _a.sent();
+                        res.json(materia);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ApiController.prototype.actualizarMateria = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var emp, materia;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        emp = req.body;
+                        return [4 /*yield*/, database_1.default.query('actualizar_materia(?, ?, ?)', [emp.id, emp.nombre, emp.contenido])];
+                    case 1:
+                        materia = _a.sent();
+                        res.json(materia);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ApiController.prototype.eliminarMateria = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var emp, materia;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        emp = req.body;
+                        return [4 /*yield*/, database_1.default.query('eliminar_materia(?)', [emp.id])];
+                    case 1:
+                        materia = _a.sent();
+                        res.json(materia);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     //Ciclo
     ApiController.prototype.getCiclos = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
