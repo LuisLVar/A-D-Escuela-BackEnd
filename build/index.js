@@ -10,7 +10,10 @@ var morgan_1 = __importDefault(require("morgan")); //se pueden ver las peticione
 var cors_1 = __importDefault(require("cors"));
 var indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 var apiRoutes_1 = __importDefault(require("./routes/apiRoutes"));
+<<<<<<< HEAD
 var seccion_routes_1 = __importDefault(require("./routes/seccion.routes"));
+=======
+>>>>>>> 21cfeead8ebb7bd8963abdb2fc5a1daef668a46b
 var Server = /** @class */ (function () {
     function Server() {
         this.app = express_1.default(); //express() devuelve un objeto
@@ -18,7 +21,11 @@ var Server = /** @class */ (function () {
         this.routes();
     }
     Server.prototype.config = function () {
+<<<<<<< HEAD
         this.app.set('port', process.env.PORT || 3000); //el process es para que si ya exite un puerto definido se toma ese o sino agarra el 3000
+=======
+        this.app.set('port', process.env.PORT || 3005); //el process es para que si ya exite un puerto definido se toma ese o sino agarra el 3000
+>>>>>>> 21cfeead8ebb7bd8963abdb2fc5a1daef668a46b
         //ese set es de app, es como si se le hubiera declarado una variable a app
         this.app.use(morgan_1.default('dev')); //el dev es para ver lo que estan pidiendo los clientes
         this.app.use(cors_1.default()); //pedir los datos al servidor 
@@ -28,7 +35,10 @@ var Server = /** @class */ (function () {
     Server.prototype.routes = function () {
         this.app.use('/', indexRoutes_1.default);
         this.app.use('/api', apiRoutes_1.default);
+<<<<<<< HEAD
         this.app.use('/api/seccion', seccion_routes_1.default);
+=======
+>>>>>>> 21cfeead8ebb7bd8963abdb2fc5a1daef668a46b
     };
     Server.prototype.start = function () {
         var _this = this;

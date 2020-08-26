@@ -16,7 +16,7 @@ class Server {//esta clase iniciara al servidor
         this.routes();
     }
     config(): void {//de tipo vacio
-        this.app.set('port',process.env.PORT ||3000);//el process es para que si ya exite un puerto definido se toma ese o sino agarra el 3000
+        this.app.set('port',process.env.PORT ||3005);//el process es para que si ya exite un puerto definido se toma ese o sino agarra el 3000
         //ese set es de app, es como si se le hubiera declarado una variable a app
         this.app.use(morgan('dev'));//el dev es para ver lo que estan pidiendo los clientes
         this.app.use(cors());//pedir los datos al servidor 
