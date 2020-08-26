@@ -14,6 +14,11 @@ class ApiRoutes{
         this.router.get('/getCiclos', apiController.getCiclos);
         this.router.post('/crearCiclo', apiController.crearCiclo);
         this.router.post('/eliminarCiclo', apiController.eliminarCiclo);   
+        this.router.post('/materias', apiController.insertarMateria);
+        this.router.put('/materias', apiController.actualizarMateria);
+        this.router.get('/materias/:id', apiController.obtenerMateria); 
+        this.router.get('/materias/', apiController.obtenerMaterias);
+        this.router.delete('/materias', apiController.eliminarMateria); 
     }
 
 }
