@@ -19,11 +19,11 @@ class ApiRoutes{
         this.router.get('/materias/:id', apiController.obtenerMateria); 
         this.router.get('/materias/', apiController.obtenerMaterias);
         this.router.delete('/materias/:id', apiController.eliminarMateria); 
-        this.router.post('/alumnos', apiController.insertarMateria);
-        this.router.put('/alumnos', apiController.actualizarMateria);
-        this.router.get('/alumnos/:id', apiController.obtenerMateria); 
-        this.router.get('/alumnos/', apiController.obtenerMaterias);
-        this.router.delete('/alumnos/:id', apiController.eliminarMateria); 
+        this.router.post('/alumnos', apiController.insertarAlumno);
+        this.router.put('/alumnos', apiController.actualizarAlumno);
+        this.router.get('/alumnos/:id', apiController.obtenerAlumno); 
+        this.router.get('/alumnos/', apiController.obtenerAlumnos);
+        this.router.delete('/alumnos/:id', apiController.eliminarAlumno); 
     }
 
 }

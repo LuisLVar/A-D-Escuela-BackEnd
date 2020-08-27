@@ -126,3 +126,10 @@ BEGIN
  END IF;
 END;
 $$
+
+SELECT insertar_alumno('Victor', 'Lopez', 'Ciudad', '55555555', '1234567890123', 'yo mismo', '1990-08-13', 1);
+SELECT * FROM alumno;
+SELECT obtener_alumno(1);
+SELECT obtener_alumno(2);
+SELECT actualizar_alumno(1, 'Victor Alfonso', 'Lopez Morales', 'Ciudad', '55555555', '1234567890123', 'yo mismo', '1990-08-13', 1);
+SELECT eliminar_alumno(1);

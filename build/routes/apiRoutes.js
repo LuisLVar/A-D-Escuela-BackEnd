@@ -16,7 +16,12 @@ var ApiRoutes = /** @class */ (function () {
         this.router.put('/materias', apiController_1.apiController.actualizarMateria);
         this.router.get('/materias/:id', apiController_1.apiController.obtenerMateria);
         this.router.get('/materias/', apiController_1.apiController.obtenerMaterias);
-        this.router.delete('/materias', apiController_1.apiController.eliminarMateria);
+        this.router.delete('/materias/:id', apiController_1.apiController.eliminarMateria);
+        this.router.post('/alumnos', apiController_1.apiController.insertarAlumno);
+        this.router.put('/alumnos', apiController_1.apiController.actualizarAlumno);
+        this.router.get('/alumnos/:id', apiController_1.apiController.obtenerAlumno);
+        this.router.get('/alumnos/', apiController_1.apiController.obtenerAlumnos);
+        this.router.delete('/alumnos/:id', apiController_1.apiController.eliminarAlumno);
     };
     return ApiRoutes;
 }());
