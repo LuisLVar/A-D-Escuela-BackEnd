@@ -1,9 +1,9 @@
-# CRUD de la tabla MATERIA
+# CRUD de la tabla ALUMNO
 
-# FUNCTION insertar_alumno
+# PROCEDURE insertar_alumno
 USE control_notas;
 DELIMITER $$
-CREATE FUNCTION insertar_alumno ( 
+CREATE PROCEDURE insertar_alumno ( 
  p_nombre VARCHAR(80),
  p_apellido VARCHAR(80),
  p_direccion VARCHAR(100),
@@ -13,7 +13,6 @@ CREATE FUNCTION insertar_alumno (
  p_fecha_nacimiento DATE,
  p_estado INTEGER
 )
- RETURNS JSON DETERMINISTIC
 BEGIN
  DECLARE existe INT DEFAULT 0;
  IF( SELECT nombre FROM alumno WHERE cui = p_cui ) IS NULL THEN
@@ -23,51 +22,37 @@ BEGIN
  END IF;
 
  IF existe THEN
-  RETURN '{"estado": 500, "mensaje": "Ya existe la alumno con ese cui que se desea ingresar."}';
+  SELECT * FROM mensaje WHERE codigo = 501;
  ELSE
   IF p_nombre IS NOT NULL AND p_apellido IS NOT NULL THEN
    INSERT INTO  alumno (nombre, apellido, direccion, telefono, cui, encargado, fecha_nacimiento, estado) 
     VALUES (p_nombre, p_apellido, p_direccion, p_telefono, p_cui, p_encargado, p_fecha_nacimiento, p_estado);
-   RETURN '{"estado": 200, "mensaje": "Operación completada con exito."}';
+   SELECT * FROM mensaje WHERE codigo = 200;
   ELSE
-   RETURN '{"estado": 500, "mensaje": "El nombre y el apellido son valores obligatorio"}';
+   SELECT * FROM mensaje WHERE codigo = 500;
   END IF;
  END IF;
  
 END;
 $$
 
-# FUNCTION obtener_alumno
+# PROCEDURE obtener_alumno
 USE control_notas
 DELIMITER $$
-CREATE FUNCTION obtener_alumno ( p_alumno INT )
- RETURNS JSON DETERMINISTIC
+CREATE PROCEDURE obtener_alumno ( p_alumno INT )
 BEGIN
  IF (SELECT alumno FROM alumno WHERE p_alumno = alumno) IS NOT NULL THEN
-  RETURN ( SELECT JSON_OBJECT (
-                   'alumno', alumno,
-				   'nombre', nombre,
-                   'apellido', apellido,
-				   'direccion', direccion,
-                   'telefono', telefono,
-                   'cui', cui,
-                   'encargado', encargado,
-                   'fecha_nacimiento', fecha_nacimiento,
-			       'estado', estado 
-				  ) 
-            FROM alumno
-             WHERE p_alumno = alumno
-         );
+  SELECT * FROM alumno WHERE p_alumno = alumno;
  ELSE 
-  RETURN '{"estado": 400, "mensaje": "No se puedo encontrar el registro en la tabla alumno."}';
+  SELECT * FROM mensaje WHERE codigo = 400;
  END IF;
 END;
 $$
 
-# FUNCTION actualizar_alumno
+# PROCEDURE actualizar_alumno
 USE control_notas;
 DELIMITER $$
-CREATE FUNCTION actualizar_alumno ( 
+CREATE PROCEDURE actualizar_alumno ( 
  p_alumno INT,
  p_nombre VARCHAR(80),
  p_apellido VARCHAR(80),
@@ -78,7 +63,6 @@ CREATE FUNCTION actualizar_alumno (
  p_fecha_nacimiento DATE,
  p_estado INTEGER
 )
-RETURNS JSON DETERMINISTIC
 BEGIN
  DECLARE existe INT DEFAULT 0;
 
@@ -101,35 +85,27 @@ BEGIN
      fecha_nacimiento = p_fecha_nacimiento,
 	 estado = p_estado 
       WHERE p_alumno = alumno;
-    RETURN '{"estado": 200, "mensaje": "Operación completada con exito."}';
+    SELECT * FROM mensaje WHERE codigo = 200;
   ELSE 
-   RETURN '{"estado": 500, "mensaje": "El nombre y el apellido son valores obligatorio"}';
+   SELECT * FROM mensaje WHERE codigo = 500;
   END IF;
  ELSE
-  RETURN '{"estado": 500, "mensaje": "No existe la alumno que se desea actualizar."}';
+  SELECT * FROM mensaje WHERE codigo = 502;
  END IF;
 END;
 $$
 
-# FUNCTION eliminar_alumno
+# PROCEDURE eliminar_alumno
 USE control_notas
 DELIMITER $$
-CREATE FUNCTION eliminar_alumno ( p_alumno INT )
- RETURNS JSON DETERMINISTIC
+CREATE PROCEDURE eliminar_alumno ( p_alumno INT )
 BEGIN
  IF (SELECT alumno FROM alumno WHERE p_alumno = alumno) IS NOT NULL THEN
   DELETE FROM alumno 
    WHERE p_alumno = alumno;
-  RETURN '{"estado": 200, "mensaje": "Operación completada con exito."}';   
+  SELECT * FROM mensaje WHERE codigo = 200;
  ELSE 
-  RETURN '{"estado": 400, "mensaje": "No se puedo encontrar el registro en la tabla alumno."}';
+  SELECT * FROM mensaje WHERE codigo = 503;
  END IF;
 END;
 $$
-
-SELECT insertar_alumno('Victor', 'Lopez', 'Ciudad', '55555555', '1234567890123', 'yo mismo', '1990-08-13', 1);
-SELECT * FROM alumno;
-SELECT obtener_alumno(1);
-SELECT obtener_alumno(2);
-SELECT actualizar_alumno(1, 'Victor Alfonso', 'Lopez Morales', 'Ciudad', '55555555', '1234567890123', 'yo mismo', '1990-08-13', 1);
-SELECT eliminar_alumno(1);
