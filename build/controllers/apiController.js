@@ -50,7 +50,7 @@ var ApiController = /** @class */ (function () {
             var materia;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, database_1.default.query('select insertar_materia(?, ?)', [req.body.nombre, req.body.contenido])];
+                    case 0: return [4 /*yield*/, database_1.default.query('call insertar_materia(?, ?)', [req.body.nombre, req.body.contenido])];
                     case 1:
                         materia = _a.sent();
                         res.json(materia);
@@ -66,7 +66,7 @@ var ApiController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         id = req.params.id;
-                        return [4 /*yield*/, database_1.default.query('select obtener_materia(?)', [id])];
+                        return [4 /*yield*/, database_1.default.query('call obtener_materia(?)', [id])];
                     case 1:
                         materia = _a.sent();
                         res.json(materia);
@@ -96,7 +96,7 @@ var ApiController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         emp = req.body;
-                        return [4 /*yield*/, database_1.default.query('select actualizar_materia(?, ?, ?)', [emp.id, emp.nombre, emp.contenido])];
+                        return [4 /*yield*/, database_1.default.query('call actualizar_materia(?, ?, ?)', [emp.id, emp.nombre, emp.contenido])];
                     case 1:
                         materia = _a.sent();
                         res.json(materia);
@@ -112,7 +112,7 @@ var ApiController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         id = req.params.id;
-                        return [4 /*yield*/, database_1.default.query('select eliminar_materia(?)', [id])];
+                        return [4 /*yield*/, database_1.default.query('call eliminar_materia(?)', [id])];
                     case 1:
                         materia = _a.sent();
                         res.json(materia);
@@ -123,13 +123,13 @@ var ApiController = /** @class */ (function () {
     };
     ApiController.prototype.insertarAlumno = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var materia;
+            var alumno;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, database_1.default.query('select insertar_obtener_alumno(?, ?, ?, ?, ?, ?, ?, ?)', [req.body.nombre, req.body.apellido, req.body.direccion, req.body.telefono, req.body.cui, req.body.encargado, req.body.fecha_nacimiento, req.body.estado])];
+                    case 0: return [4 /*yield*/, database_1.default.query('call insertar_obtener_alumno(?, ?, ?, ?, ?, ?, ?, ?)', [req.body.nombre, req.body.apellido, req.body.direccion, req.body.telefono, req.body.cui, req.body.encargado, req.body.fecha_nacimiento, req.body.estado])];
                     case 1:
-                        materia = _a.sent();
-                        res.set(materia);
+                        alumno = _a.sent();
+                        res.json(alumno);
                         return [2 /*return*/];
                 }
             });
@@ -142,7 +142,7 @@ var ApiController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         id = req.params.id;
-                        return [4 /*yield*/, database_1.default.query('SELECT obtener_alumno(?)', [id])];
+                        return [4 /*yield*/, database_1.default.query('call obtener_alumno(?)', [id])];
                     case 1:
                         alumno = _a.sent();
                         res.json(alumno);
@@ -167,15 +167,15 @@ var ApiController = /** @class */ (function () {
     };
     ApiController.prototype.actualizarAlumno = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var emp, materia;
+            var emp, alumno;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         emp = req.body;
-                        return [4 /*yield*/, database_1.default.query('actualizar_alumno(?, ?, ?, ?, ?, ?, ?, ?, ?)', [req.body.alumno, req.body.nombre, req.body.apellido, req.body.direccion, req.body.telefono, req.body.cui, req.body.encargado, req.body.fecha_nacimiento, req.body.estado])];
+                        return [4 /*yield*/, database_1.default.query('call actualizar_alumno(?, ?, ?, ?, ?, ?, ?, ?, ?)', [req.body.alumno, req.body.nombre, req.body.apellido, req.body.direccion, req.body.telefono, req.body.cui, req.body.encargado, req.body.fecha_nacimiento, req.body.estado])];
                     case 1:
-                        materia = _a.sent();
-                        res.set(materia);
+                        alumno = _a.sent();
+                        res.json(alumno);
                         return [2 /*return*/];
                 }
             });
@@ -183,15 +183,15 @@ var ApiController = /** @class */ (function () {
     };
     ApiController.prototype.eliminarAlumno = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, materia;
+            var id, alumno;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         id = req.params.id;
-                        return [4 /*yield*/, database_1.default.query('eliminar_materia(?)', [id])];
+                        return [4 /*yield*/, database_1.default.query('call eliminar_alumno(?)', [id])];
                     case 1:
-                        materia = _a.sent();
-                        res.json(materia);
+                        alumno = _a.sent();
+                        res.json(alumno);
                         return [2 /*return*/];
                 }
             });
