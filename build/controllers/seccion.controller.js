@@ -70,15 +70,10 @@ var SeccionController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         id = req.params.id;
-                        return [4 /*yield*/, database_1.default.query('SELECT * FROM seccion WHERE seccion = ?', [id])];
+                        return [4 /*yield*/, database_1.default.query('call obtener_seccion(?)', [id])];
                     case 1:
                         secciones = _a.sent();
-                        if (secciones.length > 0) {
-                            return [2 /*return*/, res.json(secciones[0])];
-                        }
-                        res.status(404).json({
-                            text: "the game doesn't exits "
-                        });
+                        res.json(secciones);
                         return [2 /*return*/];
                 }
             });
@@ -89,12 +84,11 @@ var SeccionController = /** @class */ (function () {
             var result;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, database_1.default.query('INSERT INTO seccion set ?', [req.body])];
+                    case 0: return [4 /*yield*/, database_1.default.query('call insertar_seccion(?, ?, ?, ?, ?)', [req.body.nombre,
+                            req.body.estado, req.body.grado, req.body.personal, req.body.ciclo])];
                     case 1:
                         result = _a.sent();
-                        res.json({
-                            text: 'seccion save'
-                        });
+                        res.json(result);
                         return [2 /*return*/];
                 }
             });
@@ -102,18 +96,16 @@ var SeccionController = /** @class */ (function () {
     };
     SeccionController.prototype.update = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, oldseccion;
+            var param, result;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        id = req.params.id;
-                        oldseccion = req.body;
-                        return [4 /*yield*/, database_1.default.query('UPDATE seccion set ? WHERE seccion = ? ', [oldseccion, id])];
+                        param = req.body;
+                        return [4 /*yield*/, database_1.default.query('call actualizar_seccion(?, ?, ?, ?, ?, ?)', [param.seccion, param.nombre,
+                                param.estado, param.grado, param.personal, param.ciclo])];
                     case 1:
-                        _a.sent();
-                        res.json({
-                            text: 'the seccion was update'
-                        });
+                        result = _a.sent();
+                        res.json(result);
                         return [2 /*return*/];
                 }
             });
@@ -121,17 +113,15 @@ var SeccionController = /** @class */ (function () {
     };
     SeccionController.prototype.delete = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id;
+            var id, result;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         id = req.params.id;
-                        return [4 /*yield*/, database_1.default.query('DELETE FROM seccion WHERE seccion = ?', [id])];
+                        return [4 /*yield*/, database_1.default.query('call eliminar_seccion(?)', [id])];
                     case 1:
-                        _a.sent();
-                        res.json({
-                            text: ' the seccion was delete'
-                        });
+                        result = _a.sent();
+                        res.json(result);
                         return [2 /*return*/];
                 }
             });

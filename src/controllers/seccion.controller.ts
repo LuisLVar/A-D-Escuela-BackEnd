@@ -16,39 +16,28 @@ class SeccionController{
 
     public async getOne(req: Request, res: Response): Promise<any>{
         const {id} = req.params;
-        const secciones = await pool.query('SELECT * FROM seccion WHERE seccion = ?',[id]);
-        if(secciones.length > 0){
-            return res.json(secciones[0]);
-        }
-        res.status(404).json({
-            text: "the game doesn't exits "
-        });
+        const secciones = await pool.query('call obtener_seccion(?)',[id]);
+        res.json(secciones);
     }
 
     public async create(req: Request, res: Response): Promise<void> {
-        const result = await pool.query('INSERT INTO seccion set ?', [req.body]);
-        res.json({
-            text: 'seccion save'
-        });
-
+        const result = await pool.query('call insertar_seccion(?, ?, ?, ?, ?)', [req.body.nombre,
+        req.body.estado, req.body.grado, req.body.personal, req.body.ciclo]);
+        res.json(result);
     }
 
     public async update(req: Request, res: Response): Promise<void>{
-        const {id} = req.params;
-        const oldseccion = req.body;
-        await pool.query('UPDATE seccion set ? WHERE seccion = ? ', [oldseccion, id]);
-        res.json({
-            text: 'the seccion was update'
-        });
+        const param = req.body;
+        const result = await pool.query('call actualizar_seccion(?, ?, ?, ?, ?, ?)', [param.seccion, param.nombre,
+            param.estado, param.grado, param.personal, param.ciclo]);
+        res.json(result);
 
     }
 
     public async delete(req: Request, res: Response): Promise<void>{
         const {id} = req.params ; 
-        await pool.query('DELETE FROM seccion WHERE seccion = ?', [id]);
-        res.json({
-            text: ' the seccion was delete'
-        });
+        const result = await pool.query('call eliminar_seccion(?)', [id]);
+        res.json(result);
     }
 }
 

@@ -12,7 +12,7 @@ var SeccionRoutes = /** @class */ (function () {
         this.router.get('/', seccion_controller_1.seccionController.list);
         this.router.get('/:id', seccion_controller_1.seccionController.getOne);
         this.router.post('/', seccion_controller_1.seccionController.create);
-        this.router.put('/:id', seccion_controller_1.seccionController.update);
+        this.router.put('/', seccion_controller_1.seccionController.update);
         this.router.delete('/:id', seccion_controller_1.seccionController.delete);
     };
     return SeccionRoutes;
