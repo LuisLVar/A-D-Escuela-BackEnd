@@ -6,14 +6,14 @@ class ApiController {
 //Materia
 
 public async insertarMateria(req: Request, res: Response) {
-  const materia = await pool.query('insertar_materia(?, ?)', [req.body.nombre, req.body.contenido]);        
+  const materia = await pool.query('select insertar_materia(?, ?)', [req.body.nombre, req.body.contenido]);        
       res.json(materia);
   
 }
 
 public async obtenerMateria(req: Request, res: Response) {
   const {id} = req.params;
-  const materia = await pool.query('obtener_materia(?)',[id]);
+  const materia = await pool.query('select obtener_materia(?)',[id]);
   res.json(materia);
   
 }
@@ -25,16 +25,48 @@ public async obtenerMaterias(req: Request, res: Response) {
   
 public async actualizarMateria(req: Request, res: Response) {
   let emp = req.body;
+  const materia = await pool.query('select actualizar_materia(?, ?, ?)',[emp.id, emp.nombre, emp.contenido]);
+  res.json(materia);
+}
+  
+  
+public async eliminarMateria(req: Request, res: Response) {
+  let emp = req.body;
+  const materia = await pool.query('select eliminar_materia(?)',[emp.id]);
+  res.json(materia);
+}
+
+public async insertarAlumno(req: Request, res: Response) {
+  const materia = await pool.query('select insertar_materia(?, ?)', [req.body.nombre, req.body.contenido]);        
+      res.json(materia);
+  
+}
+
+public async obtenerAlumno(req: Request, res: Response) {
+  const {id} = req.params;
+  const materia = await pool.query('SELECT obtener_materia(?)',[id]);
+  res.json(materia);
+  
+}
+
+public async obtenerAlumnos(req: Request, res: Response) {
+  const materia = await pool.query('select * from alumno');
+  res.json(materia);
+}
+  
+public async actualizarAlumno(req: Request, res: Response) {
+  let emp = req.body;
   const materia = await pool.query('actualizar_materia(?, ?, ?)',[emp.id, emp.nombre, emp.contenido]);
   res.json(materia);
 }
   
   
-  public async eliminarMateria(req: Request, res: Response) {
+  public async eliminarAlumno(req: Request, res: Response) {
   let emp = req.body;
   const materia = await pool.query('eliminar_materia(?)',[emp.id]);
   res.json(materia);
 }
+
 
 //Ciclo
 
