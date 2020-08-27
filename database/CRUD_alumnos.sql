@@ -1,6 +1,6 @@
 # CRUD de la tabla MATERIA
 
-# FUNCTION insertar_materia
+# FUNCTION insertar_alumno
 USE control_notas;
 DELIMITER $$
 CREATE FUNCTION insertar_alumno ( 
