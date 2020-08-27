@@ -36,3 +36,30 @@ BEGIN
  
 END;
 $$
+
+# FUNCTION obtener_alumno
+USE control_notas
+DELIMITER $$
+CREATE FUNCTION obtener_alumno ( p_alumno INT )
+ RETURNS JSON DETERMINISTIC
+BEGIN
+ IF (SELECT alumno FROM alumno WHERE p_alumno = alumno) IS NOT NULL THEN
+  RETURN ( SELECT JSON_OBJECT (
+                   'alumno', alumno,
+				   'nombre', nombre,
+                   'apellido', apellido,
+				   'direccion', direccion,
+                   'telefono', telefono,
+                   'cui', cui,
+                   'encargado', encargado,
+                   'fecha_nacimiento', fecha_nacimiento,
+			       'estado', estado 
+				  ) 
+            FROM alumno
+             WHERE p_alumno = alumno
+         );
+ ELSE 
+  RETURN '{"estado": 400, "mensaje": "No se puedo encontrar el registro en la tabla alumno."}';
+ END IF;
+END;
+$$
