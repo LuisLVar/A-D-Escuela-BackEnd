@@ -9,20 +9,30 @@ class ApiController {
 public async getCiclos(req: Request, res: Response) {
   const ciclos = await pool.query('select * from ciclo');        
       res.json(ciclos);
-  
 }
 
 public async crearCiclo(req: Request, res: Response) {
-  let emp = req.body;
-  await pool.query('insert into ciclo (anio) values (?)',[emp.year]);
-  res.json({estado: true});
-  
+  const ciclo = await pool.query('call insertar_ciclo(?)', [req.body.anio]);        
+      res.json(ciclo);
 }
 
-public async eliminarCiclo(req: Request, res: Response) {
+public async obtenerCiclo(req: Request, res: Response) {
+  const {id} = req.params;
+  const ciclo = await pool.query('call obtener_ciclo(?)',[id]);
+  res.json(ciclo);
+}
+
+public async actualizarCiclo(req: Request, res: Response) {
   let emp = req.body;
-  await pool.query('delete from ciclo where ciclo=?',[emp.ciclo]);
-  res.json({estado: true});
+  const ciclo = await pool.query('call actualizar_ciclo(?, ?)',[emp.ciclo, emp.anio]);
+  res.json(ciclo);
+}
+  
+  
+  public async eliminarCiclo(req: Request, res: Response) {
+  let emp = req.body;
+  const ciclo = await pool.query('call eliminar_ciclo(?)',[emp.ciclo]);
+  res.json(ciclo);
 }
 
 
