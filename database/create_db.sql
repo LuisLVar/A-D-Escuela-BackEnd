@@ -248,3 +248,6 @@ CREATE TABLE aspecto_bloque (
    REFERENCES aspecto(aspecto)
 );
 
+INSERT INTO mensaje(codigo, mensaje) VALUES(200, 'Se realizo correctamente la operación');
+INSERT INTO mensaje(codigo, mensaje) VALUES(400, 'No se encontro el registro en la tabla');
+INSERT INTO mensaje(codigo, mensaje) VALUES(500, 'Faltan datos obligatorios');
