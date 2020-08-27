@@ -110,3 +110,19 @@ BEGIN
  END IF;
 END;
 $$
+
+# FUNCTION eliminar_alumno
+USE control_notas
+DELIMITER $$
+CREATE FUNCTION eliminar_alumno ( p_alumno INT )
+ RETURNS JSON DETERMINISTIC
+BEGIN
+ IF (SELECT alumno FROM alumno WHERE p_alumno = alumno) IS NOT NULL THEN
+  DELETE FROM alumno 
+   WHERE p_alumno = alumno;
+  RETURN '{"estado": 200, "mensaje": "Operación completada con exito."}';   
+ ELSE 
+  RETURN '{"estado": 400, "mensaje": "No se puedo encontrar el registro en la tabla alumno."}';
+ END IF;
+END;
+$$
