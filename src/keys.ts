@@ -6,5 +6,4 @@ export default{//encargado de la configuracion de db
       password: process.env.PWD_DB,
       database: 'control_notas'
   }
-
 }
