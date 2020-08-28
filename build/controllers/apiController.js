@@ -107,12 +107,12 @@ var ApiController = /** @class */ (function () {
     };
     ApiController.prototype.eliminarCiclo = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var emp, ciclo;
+            var id, ciclo;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        emp = req.body;
-                        return [4 /*yield*/, database_1.default.query('call eliminar_ciclo(?)', [emp.ciclo])];
+                        id = req.params.id;
+                        return [4 /*yield*/, database_1.default.query('call eliminar_ciclo(?)', [id])];
                     case 1:
                         ciclo = _a.sent();
                         res.json(ciclo);

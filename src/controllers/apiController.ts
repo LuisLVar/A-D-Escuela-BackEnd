@@ -30,8 +30,8 @@ public async actualizarCiclo(req: Request, res: Response) {
   
   
   public async eliminarCiclo(req: Request, res: Response) {
-  let emp = req.body;
-  const ciclo = await pool.query('call eliminar_ciclo(?)',[emp.ciclo]);
+  const {id} = req.params;
+  const ciclo = await pool.query('call eliminar_ciclo(?)',[id]);
   res.json(ciclo);
 }
 

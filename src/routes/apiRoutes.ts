@@ -13,7 +13,7 @@ class ApiRoutes{
         //Aqui van las referencias a los get y post.
         this.router.get('/ciclos', apiController.getCiclos);
         this.router.post('/ciclos', apiController.crearCiclo);
-        this.router.delete('/ciclos', apiController.eliminarCiclo);  
+        this.router.delete('/ciclos/:id', apiController.eliminarCiclo);  
         this.router.get('/ciclos/:id', apiController.obtenerCiclo); 
         this.router.put('/ciclos', apiController.actualizarCiclo); 
     }
