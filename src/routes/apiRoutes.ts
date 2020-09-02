@@ -24,6 +24,9 @@ class ApiRoutes{
         this.router.get('/alumnos/:id', apiController.obtenerAlumno); 
         this.router.get('/alumnos/', apiController.obtenerAlumnos);
         this.router.delete('/alumnos/:id', apiController.eliminarAlumno); 
+
+
+        
     }
 
 }
