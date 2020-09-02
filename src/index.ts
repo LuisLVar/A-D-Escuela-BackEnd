@@ -26,7 +26,6 @@ class Server {//esta clase iniciara al servidor
     routes():void {//para conf las rutas de mi servidor
         this.app.use('/', indexRoutes);
         this.app.use('/api', apiRoutes);
-        this.app.use('/api/seccion',seccionRoutes);
     }
     start():void {//inicializar el servidor -> para que el servidor empiece a escuchar
         this.app.listen(this.app.get('port'),() => {  
