@@ -2,6 +2,8 @@ import { Router } from 'express';
 import { apiController } from '../controllers/apiController';
 import pool from '../database';
 
+import {seccionController} from '../controllers/seccion.controller';
+
 class ApiRoutes{
     public router: Router = Router();
 
@@ -29,6 +31,12 @@ class ApiRoutes{
         this.router.delete('/alumnos/:id', apiController.eliminarAlumno); 
 
 
+        //Aqui van las referencias a los get y post.
+        this.router.get('/secciones', seccionController.list);
+        this.router.get('/secciones/:id', seccionController.getOne);
+        this.router.post('/secciones', seccionController.create);
+        this.router.put('/secciones', seccionController.update);
+        this.router.delete('/secciones/:id', seccionController.delete);
         
     }
 
