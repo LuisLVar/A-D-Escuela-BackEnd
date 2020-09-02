@@ -21,6 +21,15 @@ class ApiRoutes{
         this.router.delete('/ciclos/:id', apiController.eliminarCiclo);  
         this.router.get('/ciclos/:id', apiController.obtenerCiclo); 
         this.router.put('/ciclos', apiController.actualizarCiclo); 
+        this.router.delete('/materias/:id', apiController.eliminarMateria); 
+        this.router.post('/alumnos', apiController.insertarAlumno);
+        this.router.put('/alumnos', apiController.actualizarAlumno);
+        this.router.get('/alumnos/:id', apiController.obtenerAlumno); 
+        this.router.get('/alumnos/', apiController.obtenerAlumnos);
+        this.router.delete('/alumnos/:id', apiController.eliminarAlumno); 
+
+
+        
     }
 
 }
