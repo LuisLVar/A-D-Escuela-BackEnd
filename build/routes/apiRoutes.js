@@ -26,12 +26,18 @@ var ApiRoutes = /** @class */ (function () {
         this.router.get('/alumnos/:id', apiController_1.apiController.obtenerAlumno);
         this.router.get('/alumnos/', apiController_1.apiController.obtenerAlumnos);
         this.router.delete('/alumnos/:id', apiController_1.apiController.eliminarAlumno);
-        //Aqui van las referencias a los get y post.
+        //Secciones
         this.router.get('/secciones', seccion_controller_1.seccionController.list);
         this.router.get('/secciones/:id', seccion_controller_1.seccionController.getOne);
         this.router.post('/secciones', seccion_controller_1.seccionController.create);
         this.router.put('/secciones', seccion_controller_1.seccionController.update);
         this.router.delete('/secciones/:id', seccion_controller_1.seccionController.delete);
+        //Grados
+        this.router.get('/grados', apiController_1.apiController.getGrados);
+        this.router.get('/grados/:id', apiController_1.apiController.obtenerGrado);
+        this.router.post('/grados', apiController_1.apiController.crearGrado);
+        this.router.put('/grados', apiController_1.apiController.actualizarGrado);
+        this.router.delete('/grados/:id', apiController_1.apiController.eliminarGrado);
     };
     return ApiRoutes;
 }());

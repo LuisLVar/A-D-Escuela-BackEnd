@@ -210,3 +210,6 @@ CREATE TABLE mensaje(
 INSERT INTO mensaje(codigo, mensaje) VALUES(200, 'Se realizo correctamente la operación');
 INSERT INTO mensaje(codigo, mensaje) VALUES(400, 'No se encontro el registro en la tabla');
 INSERT INTO mensaje(codigo, mensaje) VALUES(500, 'Faltan datos obligatorios');
+INSERT INTO mensaje(codigo, mensaje) VALUES(501, 'Error: Ya existe el dato que se desea ingresar.');
+INSERT INTO mensaje(codigo, mensaje) VALUES(502, 'Error: No existe el registro a modificar.');
+INSERT INTO mensaje(codigo, mensaje) VALUES(503, 'Error: No existe el registro a eliminar.');

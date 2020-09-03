@@ -31,12 +31,19 @@ class ApiRoutes{
         this.router.delete('/alumnos/:id', apiController.eliminarAlumno); 
 
 
-        //Aqui van las referencias a los get y post.
+        //Secciones
         this.router.get('/secciones', seccionController.list);
         this.router.get('/secciones/:id', seccionController.getOne);
         this.router.post('/secciones', seccionController.create);
         this.router.put('/secciones', seccionController.update);
         this.router.delete('/secciones/:id', seccionController.delete);
+
+        //Grados
+        this.router.get('/grados', apiController.getGrados);
+        this.router.get('/grados/:id', apiController.obtenerGrado);
+        this.router.post('/grados', apiController.crearGrado);
+        this.router.put('/grados', apiController.actualizarGrado);
+        this.router.delete('/grados/:id', apiController.eliminarGrado);
         
     }
 

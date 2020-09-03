@@ -1,4 +1,4 @@
-# CRUD de la tabla MATERIA
+# CRUD de la tabla CICLO
 
 use control_notas;
 #PROCEDURE insertar_ciclo

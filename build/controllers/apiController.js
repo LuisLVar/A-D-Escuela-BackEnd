@@ -274,6 +274,83 @@ var ApiController = /** @class */ (function () {
             });
         });
     };
+    //Grado
+    ApiController.prototype.getGrados = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var grados;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, database_1.default.query('select * from grado')];
+                    case 1:
+                        grados = _a.sent();
+                        res.json(grados);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ApiController.prototype.crearGrado = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var grados;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, database_1.default.query('call insertar_grado(?)', [req.body.nombre])];
+                    case 1:
+                        grados = _a.sent();
+                        res.json(grados);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ApiController.prototype.obtenerGrado = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var id, grado;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        id = req.params.id;
+                        return [4 /*yield*/, database_1.default.query('call obtener_grado(?)', [id])];
+                    case 1:
+                        grado = _a.sent();
+                        res.json(grado);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ApiController.prototype.actualizarGrado = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var emp, grado;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        emp = req.body;
+                        return [4 /*yield*/, database_1.default.query('call actualizar_grado(?, ?)', [emp.grado, emp.nombre])];
+                    case 1:
+                        grado = _a.sent();
+                        res.json(grado);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ApiController.prototype.eliminarGrado = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var id, grado;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        id = req.params.id;
+                        return [4 /*yield*/, database_1.default.query('call eliminar_grado(?)', [id])];
+                    case 1:
+                        grado = _a.sent();
+                        res.json(grado);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     return ApiController;
 }());
 exports.apiController = new ApiController();
