@@ -29,6 +29,11 @@ class ApiRoutes{
         this.router.get('/alumnos/:id', apiController.obtenerAlumno); 
         this.router.get('/alumnos/', apiController.obtenerAlumnos);
         this.router.delete('/alumnos/:id', apiController.eliminarAlumno); 
+        this.router.post('/personal', apiController.insertarPersonal);
+        this.router.put('/personal', apiController.actualizarPersonal);
+        this.router.get('/personal/:id', apiController.obtenerPersonal); 
+        this.router.get('/personal/', apiController.obtenerPersonal);
+        this.router.delete('/personal/:id', apiController.eliminarPersonal); 
 
 
         //Secciones
