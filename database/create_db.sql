@@ -6,14 +6,14 @@ USE control_notas;
 CREATE TABLE escuela (
     escuela INTEGER NOT NULL AUTO_INCREMENT,
     nombre_oficial VARCHAR(80) NOT NULL,
-    dirección VARCHAR(100) NOT NULL,
+    direccion VARCHAR(100) NOT NULL,
     telefono VARCHAR(50) NOT NULL,
     CONSTRAINT escuela_pk PRIMARY KEY (escuela)
 );
  
 CREATE TABLE tipo_personal (
-    tipo_personal INTEGER NOT NULL,
-    nombre_tipo_personal VARCHAR(50) NOT NULL,
+    tipo_personal INTEGER NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
     CONSTRAINT tipo_personal_pk PRIMARY KEY (tipo_personal)
 );
 
@@ -24,6 +24,7 @@ CREATE TABLE personal (
     direccion VARCHAR(100),
     telefono VARCHAR(12),
     estado INTEGER NOT NULL,
+    cui BIGINT,
     personal_escuela INTEGER NOT NULL,
     personal_tipo_personal INTEGER NOT NULL,
     usuario VARCHAR(30) NOT NULL,
@@ -94,11 +95,13 @@ CREATE TABLE alumno (
     direccion VARCHAR(100),
     telefono VARCHAR(12),
     cui BIGINT,
+    nacionalidad VARCHAR(50),
+    codigo_personal VARCHAR(50),
     encargado VARCHAR(80),
     fecha_nacimiento DATE,
     estado INTEGER,
     CONSTRAINT alumno_pk PRIMARY KEY (alumno),
-    CONSTRAINT alumno_uk UNIQUE (cui)
+    CONSTRAINT alumno_uk UNIQUE (cui, codigo_personal)
 );
 
 CREATE TABLE inscripcion (
@@ -207,9 +210,12 @@ CREATE TABLE mensaje(
     CONSTRAINT mensaje_pk PRIMARY KEY (codigo)
 );
 
+INSERT INTO escuela(nombre_oficial, direccion, telefono) VALUES('Escuela Maritza Hurtarte Guillen', 'NUEVO AMANECER, LOTE 6 MANZANA 82 SECTOR I, Cdad. de Guatemala', '55555555');
+INSERT INTO tipo_personal(nombre) VALUES('Docente');
+
 INSERT INTO mensaje(codigo, mensaje) VALUES(200, 'Se realizo correctamente la operación');
-INSERT INTO mensaje(codigo, mensaje) VALUES(400, 'No se encontro el registro en la tabla');
-INSERT INTO mensaje(codigo, mensaje) VALUES(500, 'Faltan datos obligatorios');
+INSERT INTO mensaje(codigo, mensaje) VALUES(400, 'Error: No se encontro el registro en la tabla');
+INSERT INTO mensaje(codigo, mensaje) VALUES(500, 'Error: Faltan datos obligatorios');
 INSERT INTO mensaje(codigo, mensaje) VALUES(501, 'Error: Ya existe el dato que se desea ingresar.');
 INSERT INTO mensaje(codigo, mensaje) VALUES(502, 'Error: No existe el registro a modificar.');
 INSERT INTO mensaje(codigo, mensaje) VALUES(503, 'Error: No existe el registro a eliminar.');

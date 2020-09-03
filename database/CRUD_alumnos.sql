@@ -9,6 +9,8 @@ CREATE PROCEDURE insertar_alumno (
  p_direccion VARCHAR(100),
  p_telefono VARCHAR(12),
  p_cui BIGINT,
+ p_nacionalidad VARCHAR(50),
+ p_codigo_personal VARCHAR(50),
  p_encargado VARCHAR(80),
  p_fecha_nacimiento DATE,
  p_estado INTEGER
@@ -25,8 +27,8 @@ BEGIN
   SELECT * FROM mensaje WHERE codigo = 501;
  ELSE
   IF p_nombre IS NOT NULL AND p_apellido IS NOT NULL THEN
-   INSERT INTO  alumno (nombre, apellido, direccion, telefono, cui, encargado, fecha_nacimiento, estado) 
-    VALUES (p_nombre, p_apellido, p_direccion, p_telefono, p_cui, p_encargado, p_fecha_nacimiento, p_estado);
+   INSERT INTO  alumno (nombre, apellido, direccion, telefono, cui, nacionalidad, codigo_personal, encargado, fecha_nacimiento, estado) 
+    VALUES (p_nombre, p_apellido, p_direccion, p_telefono, p_cui, p_nacionalidad, p_codigo_personal, p_encargado, p_fecha_nacimiento, p_estado);
    SELECT * FROM mensaje WHERE codigo = 200;
   ELSE
    SELECT * FROM mensaje WHERE codigo = 500;
@@ -59,6 +61,8 @@ CREATE PROCEDURE actualizar_alumno (
  p_direccion VARCHAR(100),
  p_telefono VARCHAR(12),
  p_cui BIGINT,
+ p_nacionalidad VARCHAR(50),
+ p_codigo_personal VARCHAR(50),
  p_encargado VARCHAR(80),
  p_fecha_nacimiento DATE,
  p_estado INTEGER
@@ -81,6 +85,8 @@ BEGIN
 	 direccion = p_direccion,
      telefono = p_telefono,
      cui = p_cui,
+	 nacionalidad = p_nacionalidad,
+     codigo_personal = p_codigo_personal,
      encargado = p_encargado,
      fecha_nacimiento = p_fecha_nacimiento,
 	 estado = p_estado 
