@@ -43,6 +43,11 @@ var ApiRoutes = /** @class */ (function () {
         this.router.post('/grados', apiController_1.apiController.crearGrado);
         this.router.put('/grados', apiController_1.apiController.actualizarGrado);
         this.router.delete('/grados/:id', apiController_1.apiController.eliminarGrado);
+        //Seccion_Materia
+        this.router.get('/seccion_materia/:materia&:seccion', apiController_1.apiController.obtenerSeccionMateria);
+        this.router.get('/seccion_materia/', apiController_1.apiController.obtenerSeccionMaterias);
+        this.router.post('/seccion_materia/', apiController_1.apiController.insertarSeccionMateria);
+        this.router.delete('/seccion_materia/:materia&:seccion', apiController_1.apiController.eliminarSeccionMateria);
     };
     return ApiRoutes;
 }());

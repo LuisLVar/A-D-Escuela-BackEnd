@@ -38,7 +38,6 @@ class ApiRoutes{
         this.router.get('/personal/', apiController.obtenerPersonales);
         this.router.delete('/personal/:id', apiController.eliminarPersonal); 
 
-
         //Secciones
         this.router.get('/secciones', seccionController.list);
         this.router.get('/secciones/:id', seccionController.getOne);
@@ -53,6 +52,12 @@ class ApiRoutes{
         this.router.put('/grados', apiController.actualizarGrado);
         this.router.delete('/grados/:id', apiController.eliminarGrado);
         
+        //Seccion_Materia
+        this.router.get('/seccion_materia/:materia&:seccion', apiController.obtenerSeccionMateria);
+        this.router.get('/seccion_materia/', apiController.obtenerSeccionMaterias);
+        this.router.post('/seccion_materia/', apiController.insertarSeccionMateria);
+        this.router.delete('/seccion_materia/:materia&:seccion', apiController.eliminarSeccionMateria);
+
     }
 
 }
