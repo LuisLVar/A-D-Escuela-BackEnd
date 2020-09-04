@@ -210,9 +210,6 @@ CREATE TABLE mensaje(
     CONSTRAINT mensaje_pk PRIMARY KEY (codigo)
 );
 
-INSERT INTO escuela(nombre_oficial, direccion, telefono) VALUES('Escuela Maritza Hurtarte Guillen', 'NUEVO AMANECER, LOTE 6 MANZANA 82 SECTOR I, Cdad. de Guatemala', '55555555');
-INSERT INTO tipo_personal(nombre) VALUES('Docente');
-
 INSERT INTO mensaje(codigo, mensaje) VALUES(200, 'Se realizo correctamente la operación');
 INSERT INTO mensaje(codigo, mensaje) VALUES(400, 'Error: No se encontro el registro en la tabla');
 INSERT INTO mensaje(codigo, mensaje) VALUES(500, 'Error: Faltan datos obligatorios');
