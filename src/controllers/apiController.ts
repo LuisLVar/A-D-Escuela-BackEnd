@@ -118,10 +118,41 @@ public async actualizarCiclo(req: Request, res: Response) {
 }
   
   
-public async eliminarCiclo(req: Request, res: Response) {
+  public async eliminarCiclo(req: Request, res: Response) {
   const {id} = req.params;
   const ciclo = await pool.query('call eliminar_ciclo(?)',[id]);
   res.json(ciclo);
+  }
+  
+  //Grado
+
+public async getGrados(req: Request, res: Response) {
+  const grados = await pool.query('select * from grado');        
+      res.json(grados);
+}
+
+public async crearGrado(req: Request, res: Response) {
+  const grados = await pool.query('call insertar_grado(?)', [req.body.nombre]);        
+      res.json(grados);
+}
+
+public async obtenerGrado(req: Request, res: Response) {
+  const {id} = req.params;
+  const grado = await pool.query('call obtener_grado(?)',[id]);
+  res.json(grado);
+}
+
+public async actualizarGrado(req: Request, res: Response) {
+  let emp = req.body;
+  const grado = await pool.query('call actualizar_grado(?, ?)',[emp.grado, emp.nombre]);
+  res.json(grado);
+}
+  
+  
+  public async eliminarGrado(req: Request, res: Response) {
+  const {id} = req.params;
+  const grado = await pool.query('call eliminar_grado(?)',[id]);
+  res.json(grado);
 }
 
 
