@@ -18,23 +18,25 @@ class ApiRoutes{
         this.router.get('/materias/:id', apiController.obtenerMateria); 
         this.router.get('/materias/', apiController.obtenerMaterias);
         this.router.delete('/materias', apiController.eliminarMateria); 
+        
         this.router.get('/ciclos', apiController.getCiclos);
         this.router.post('/ciclos', apiController.crearCiclo);
         this.router.delete('/ciclos/:id', apiController.eliminarCiclo);  
         this.router.get('/ciclos/:id', apiController.obtenerCiclo); 
         this.router.put('/ciclos', apiController.actualizarCiclo); 
         this.router.delete('/materias/:id', apiController.eliminarMateria); 
+       
         this.router.post('/alumnos', apiController.insertarAlumno);
         this.router.put('/alumnos', apiController.actualizarAlumno);
         this.router.get('/alumnos/:id', apiController.obtenerAlumno); 
         this.router.get('/alumnos/', apiController.obtenerAlumnos);
         this.router.delete('/alumnos/:id', apiController.eliminarAlumno); 
+        
         this.router.post('/personal', apiController.insertarPersonal);
         this.router.put('/personal', apiController.actualizarPersonal);
         this.router.get('/personal/:id', apiController.obtenerPersonal); 
-        this.router.get('/personal/', apiController.obtenerPersonal);
+        this.router.get('/personal/', apiController.obtenerPersonales);
         this.router.delete('/personal/:id', apiController.eliminarPersonal); 
-
 
         //Secciones
         this.router.get('/secciones', seccionController.list);

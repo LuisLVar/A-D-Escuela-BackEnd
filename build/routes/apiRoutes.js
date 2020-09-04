@@ -26,6 +26,11 @@ var ApiRoutes = /** @class */ (function () {
         this.router.get('/alumnos/:id', apiController_1.apiController.obtenerAlumno);
         this.router.get('/alumnos/', apiController_1.apiController.obtenerAlumnos);
         this.router.delete('/alumnos/:id', apiController_1.apiController.eliminarAlumno);
+        this.router.post('/personal', apiController_1.apiController.insertarPersonal);
+        this.router.put('/personal', apiController_1.apiController.actualizarPersonal);
+        this.router.get('/personal/:id', apiController_1.apiController.obtenerPersonal);
+        this.router.get('/personal/', apiController_1.apiController.obtenerPersonales);
+        this.router.delete('/personal/:id', apiController_1.apiController.eliminarPersonal);
         //Secciones
         this.router.get('/secciones', seccion_controller_1.seccionController.list);
         this.router.get('/secciones/:id', seccion_controller_1.seccionController.getOne);

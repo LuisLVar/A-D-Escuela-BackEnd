@@ -65,7 +65,6 @@ public async eliminarAlumno(req: Request, res: Response) {
   res.json(alumno);
 }
 
-
 //Ciclo
 
 public async getCiclos(req: Request, res: Response) {
@@ -129,6 +128,37 @@ public async actualizarGrado(req: Request, res: Response) {
 }
 
 
+//Personal
+public async insertarPersonal(req: Request, res: Response) {
+  const personal = await pool.query('call insertar_obtener_personal(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', 
+  [req.body.nombre, req.body.apellido, req.body.direccion, req.body.telefono, req.body.estado, req.body.cui, req.body.personal_escuela,
+    req.body.personal_tipo_personal, req.body.usuario, req.body.contrasenia ]);        
+  res.json(personal);
+}
+
+public async obtenerPersonal(req: Request, res: Response) {
+  const {id} = req.params;
+  const personal = await pool.query('call obtener_personal(?)',[id]);
+  res.json(personal);
+}
+
+public async obtenerPersonales(req: Request, res: Response) {
+  const personal = await pool.query('select * from personal');
+  res.json(personal);
+}
+
+public async actualizarPersonal(req: Request, res: Response) {
+
+  const personal = await pool.query('call actualizar_obtener_personal(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', 
+  [req.body.personal, req.body.nombre, req.body.apellido, req.body.direccion, req.body.telefono, req.body.estado, req.body.cui, req.body.personal_escuela, req.body.personal_tipo_personal, req.body.usuario, req.body.contrasenia ]);        
+  res.json(personal);
+}
+
+public async eliminarPersonal(req: Request, res: Response) {
+  const {id} = req.params;
+  const personal = await pool.query('call eliminar_personal(?)',[id]);
+  res.json(personal);
+}
 
 }
 
