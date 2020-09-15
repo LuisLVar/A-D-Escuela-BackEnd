@@ -3,6 +3,7 @@ import { apiController } from '../controllers/apiController';
 import pool from '../database';
 
 import {seccionController} from '../controllers/seccion.controller';
+import { colorController } from '../controllers/color.controller';
 
 class ApiRoutes{
     public router: Router = Router();
@@ -57,6 +58,13 @@ class ApiRoutes{
         this.router.get('/seccion_materia/', apiController.obtenerSeccionMaterias);
         this.router.post('/seccion_materia/', apiController.insertarSeccionMateria);
         this.router.delete('/seccion_materia/:materia&:seccion', apiController.eliminarSeccionMateria);
+
+        //Color
+        this.router.post('/colores', colorController.insertarColor);
+        this.router.put('/colores', colorController.actualizarColor);
+        this.router.get('/colores/:id', colorController.obtenerColor); 
+        this.router.get('/colores/', colorController.obtenerColores);
+        this.router.delete('/colores', colorController.eliminarColor); 
 
     }
 
