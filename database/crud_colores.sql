@@ -73,3 +73,18 @@ BEGIN
  END IF;
 END;
 $$
+
+# PROCEDURE eliminar_color
+USE control_notas
+DELIMITER $$
+CREATE PROCEDURE eliminar_color ( p_color INT )
+BEGIN
+ IF (SELECT color FROM color WHERE p_color = color) IS NOT NULL THEN
+  DELETE FROM color 
+  WHERE p_color = color;
+  SELECT * FROM mensaje WHERE codigo = 200;
+ ELSE 
+  SELECT * FROM mensaje WHERE codigo = 503;
+ END IF;
+END;
+$$
