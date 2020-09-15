@@ -30,3 +30,16 @@ BEGIN
  
 END;
 $$
+
+# PROCEDURE obtener_color
+USE control_notas
+DELIMITER $$
+CREATE PROCEDURE obtener_color ( p_color INT )
+BEGIN
+ IF (SELECT color FROM color WHERE p_color = color) IS NOT NULL THEN
+  SELECT * FROM color WHERE p_color = color;
+ ELSE
+  SELECT * FROM mensaje WHERE codigo = 400;
+ END IF;
+END;
+$$
