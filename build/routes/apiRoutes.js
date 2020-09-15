@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = require("express");
 var apiController_1 = require("../controllers/apiController");
 var seccion_controller_1 = require("../controllers/seccion.controller");
+var color_controller_1 = require("../controllers/color.controller");
 var ApiRoutes = /** @class */ (function () {
     function ApiRoutes() {
         this.router = express_1.Router();
@@ -48,6 +49,12 @@ var ApiRoutes = /** @class */ (function () {
         this.router.get('/seccion_materia/', apiController_1.apiController.obtenerSeccionMaterias);
         this.router.post('/seccion_materia/', apiController_1.apiController.insertarSeccionMateria);
         this.router.delete('/seccion_materia/:materia&:seccion', apiController_1.apiController.eliminarSeccionMateria);
+        //Color
+        this.router.post('/colores', color_controller_1.colorController.insertarColor);
+        this.router.put('/colores', color_controller_1.colorController.actualizarColor);
+        this.router.get('/colores/:id', color_controller_1.colorController.obtenerColor);
+        this.router.get('/colores/', color_controller_1.colorController.obtenerColores);
+        this.router.delete('/colores', color_controller_1.colorController.eliminarColor);
     };
     return ApiRoutes;
 }());
