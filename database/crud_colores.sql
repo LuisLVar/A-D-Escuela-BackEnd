@@ -43,3 +43,33 @@ BEGIN
  END IF;
 END;
 $$
+
+# PROCEDURE actualizar_color
+USE control_notas;
+DELIMITER $$
+CREATE PROCEDURE actualizar_color ( p_color VARCHAR(70), p_nombre VARCHAR(70), p_significado  VARCHAR(70) )
+BEGIN
+ DECLARE existe INT DEFAULT 0;
+
+ IF (SELECT nombre FROM color WHERE color = p_color) IS NULL THEN
+  SET existe = 0;
+ ELSE 
+  SET existe = 1;
+ END IF;
+
+ IF existe THEN
+  IF p_nombre IS NOT NULL THEN
+   UPDATE color
+    SET 
+     nombre= p_nombre,
+     significado = p_significado
+      WHERE p_color = color;
+    SELECT * FROM mensaje WHERE codigo = 200;
+  ELSE 
+   SELECT * FROM mensaje WHERE codigo = 500;
+  END IF;
+ ELSE
+  SELECT * FROM mensaje WHERE codigo = 502;
+ END IF;
+END;
+$$
