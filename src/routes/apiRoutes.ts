@@ -4,6 +4,7 @@ import pool from '../database';
 
 import {seccionController} from '../controllers/seccion.controller';
 import { colorController } from '../controllers/color.controller';
+import { aspectoController } from '../controllers/aspecto.controller';
 
 class ApiRoutes{
     public router: Router = Router();
@@ -65,6 +66,13 @@ class ApiRoutes{
         this.router.get('/colores/:id', colorController.obtenerColor); 
         this.router.get('/colores/', colorController.obtenerColores);
         this.router.delete('/colores', colorController.eliminarColor); 
+
+        //Aspecto
+        this.router.post('/aspectos', aspectoController.insertarAspecto);
+        this.router.put('/aspectos', aspectoController.actualizarAspecto);
+        this.router.get('/aspectos/:id', aspectoController.obtenerAspecto); 
+        this.router.get('/aspectos/', aspectoController.obtenerAspectos);
+        this.router.delete('/aspectos', aspectoController.eliminarAspecto); 
 
     }
 
