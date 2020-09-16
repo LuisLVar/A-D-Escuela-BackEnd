@@ -4,6 +4,7 @@ var express_1 = require("express");
 var apiController_1 = require("../controllers/apiController");
 var seccion_controller_1 = require("../controllers/seccion.controller");
 var color_controller_1 = require("../controllers/color.controller");
+var aspecto_controller_1 = require("../controllers/aspecto.controller");
 var ApiRoutes = /** @class */ (function () {
     function ApiRoutes() {
         this.router = express_1.Router();
@@ -55,6 +56,12 @@ var ApiRoutes = /** @class */ (function () {
         this.router.get('/colores/:id', color_controller_1.colorController.obtenerColor);
         this.router.get('/colores/', color_controller_1.colorController.obtenerColores);
         this.router.delete('/colores', color_controller_1.colorController.eliminarColor);
+        //Aspecto
+        this.router.post('/aspectos', aspecto_controller_1.aspectoController.insertarAspecto);
+        this.router.put('/aspectos', aspecto_controller_1.aspectoController.actualizarAspecto);
+        this.router.get('/aspectos/:id', aspecto_controller_1.aspectoController.obtenerAspecto);
+        this.router.get('/aspectos/', aspecto_controller_1.aspectoController.obtenerAspectos);
+        this.router.delete('/aspectos', aspecto_controller_1.aspectoController.eliminarAspecto);
     };
     return ApiRoutes;
 }());
