@@ -29,3 +29,16 @@ BEGIN
  
 END;
 $$
+
+# PROCEDURE obtener_aspecto
+USE control_notas
+DELIMITER $$
+CREATE PROCEDURE obtener_aspecto ( p_aspecto INT )
+BEGIN
+ IF (SELECT aspecto FROM aspecto WHERE p_aspecto = aspecto) IS NOT NULL THEN
+  SELECT * FROM aspecto WHERE p_aspecto = aspecto;
+ ELSE
+  SELECT * FROM mensaje WHERE codigo = 400;
+ END IF;
+END;
+$$
