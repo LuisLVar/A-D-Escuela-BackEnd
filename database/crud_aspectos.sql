@@ -42,3 +42,32 @@ BEGIN
  END IF;
 END;
 $$
+
+# PROCEDURE actualizar_aspecto
+USE control_notas;
+DELIMITER $$
+CREATE PROCEDURE actualizar_aspecto ( p_aspecto VARCHAR(70), p_nombre VARCHAR(70) )
+BEGIN
+ DECLARE existe INT DEFAULT 0;
+
+ IF (SELECT aspecto FROM aspecto WHERE aspecto = p_aspecto) IS NULL THEN
+  SET existe = 0;
+ ELSE 
+  SET existe = 1;
+ END IF;
+
+ IF existe THEN
+  IF p_nombre IS NOT NULL THEN
+   UPDATE aspecto
+    SET 
+     nombre= p_nombre
+      WHERE p_aspecto = aspecto;
+    SELECT * FROM mensaje WHERE codigo = 200;
+  ELSE 
+   SELECT * FROM mensaje WHERE codigo = 500;
+  END IF;
+ ELSE
+  SELECT * FROM mensaje WHERE codigo = 502;
+ END IF;
+END;
+$$
