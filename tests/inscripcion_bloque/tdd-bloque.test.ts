@@ -12,4 +12,20 @@ describe.only('Prueba servicio inscripcion bloques', ()=>{
         console.log(res);
         assert.isDefined(res.length,'variable definida');
     });
+
+    it('Verificar la asignacion de bloque', async ()=> {
+        let parametros = {
+            id: 0,
+            noBloque: 1,
+            idSeccion: 2
+        }
+        let res: any = await chai.request(url)
+        .post('/api/bloques')
+        .send(parametros);
+        console.log(res);
+        let operacion: any = res[0];
+        expect(operacion.codigo).to.equal(200);
+
+    })
+
 });
