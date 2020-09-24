@@ -1,0 +1,27 @@
+// npm install comand 
+
+npm i -D chai mocha nyc ts-node typescript
+npm i -D @types/chai @types/mocha
+
+// script dentro del archivo package.json
+"test": "mocha -r ts-node/register tests/**/*.test.ts",
+"coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test"
+
+// /.vscode/launch.json esta carpeta la voy a subir para que tenga una idea de como funciona 
+// pero en si, solo es configurar la terminal para que mensajes mas especificos de lo que esta pasado
+{
+      "type": "node",
+      "request": "launch",
+      "name": "Mocha Current File",
+      "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+      "args": [
+        "--no-timeouts",
+        "--colors",
+        "${file}",
+        "--require",
+        "ts-node/register"
+      ],
+      "console": "integratedTerminal",
+      "sourceMaps": true,
+      "internalConsoleOptions": "neverOpen"
+}
