@@ -1,6 +1,7 @@
 import { Router } from 'express';//definir un enrutador
 import { indexController } from '../controllers/indexController';
 
+
 class IndexRoutes{
 
     public router: Router = Router();
