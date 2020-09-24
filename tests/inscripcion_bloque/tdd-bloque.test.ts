@@ -26,6 +26,18 @@ describe.only('Prueba servicio inscripcion bloques', ()=>{
         let operacion: any = res[0];
         expect(operacion.codigo).to.equal(200);
 
-    })
+    });
+
+    it("Obtener alumnos de una seccion", async ()=>{
+        let parametros = {
+            idSeccion: 1,
+            noBloque: 1
+        };
+        let res: any = await chai.request(url)
+        .post('api/bloques')
+        .send(parametros);
+        console.log(res);
+        assert.isDefined(res.length,'variable definida');
+    });
 
 });
