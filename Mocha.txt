@@ -1,9 +1,9 @@
-// npm install comand 
+// npm install comand, esto en teoria ya va a estar 
 
 npm i -D chai mocha nyc ts-node typescript
 npm i -D @types/chai @types/mocha
 
-// script dentro del archivo package.json
+// script dentro del archivo package.json, esto tambien ya estara en develop
 "test": "mocha -r ts-node/register tests/**/*.test.ts",
 "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test"
 
