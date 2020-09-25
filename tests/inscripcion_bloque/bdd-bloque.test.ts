@@ -77,4 +77,27 @@ describe('Creacion de un bloque', () =>{
         expect(operacion.codigo).to.equal(200);
     });
 
-})
+});
+
+describe('Obtener alumnos de una seccion', ()=>{
+    let res: any ;
+    //@Given 
+    it('Que se quiera saber que alumnos estan en cierta seccion', async ()=>{
+        expect(url).to.equal(url);
+    });
+
+    it('Enviar la seccion y el bloque a la base', async ()=>{
+        let parametros = {
+            idSeccion: 1,
+            noBloque: 1
+        };
+        res = await chai.request(url)
+        .post('api/bloques')
+        .send(parametros);
+        expect(res).not.null;
+    });
+
+    it('Obtener un lista de alumnos', async ()=>{
+        expect(res.length).not.undefined;
+    });
+});
