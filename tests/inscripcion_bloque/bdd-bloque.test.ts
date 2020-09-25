@@ -25,3 +25,26 @@ describe('Listar Bloques', ()=>{
         expect(res.length).not.undefined;
     })
 });
+
+describe('Listar bloques y no existan', ()=>{
+
+    let res: any ;
+
+    //@Given
+    it('Que se quiera ver los bloques', async() =>{
+        expect(url).to.equal(url);
+    });
+
+    //@When
+    it('realizar una solicitud a los datos para extraer los bloques', async ()=>{
+        res = await chai.request(url)
+        .get('/api/bloques');
+        console.log(res);
+        expect(res).not.null;
+    });
+
+    //@Then
+    it('Obtener un informacion vacia', async ()=>{
+        expect(res.length).to.undefined;
+    })
+});
