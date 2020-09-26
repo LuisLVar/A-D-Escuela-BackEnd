@@ -158,15 +158,14 @@ class ApiController {
 
   //Seccion_Materia
   public async insertarSeccionMateria(req: Request, res: Response) {
-    const seccion_materia = await pool.query('call insertar_seccion_materia(?, ?)', [req.body.materia, req.body.seccion]);        
+    const seccion_materia = await pool.query('call insertar_seccion_materia(?, ?)', 
+    [req.body.materia, req.body.seccion]);        
     res.json(seccion_materia);
   }
 
   public async obtenerSeccionMateria(req: Request, res: Response) {
-    const materia = req.params.materia;
-    const seccion = req.params.seccion;
     const seccion_materia = await pool.query('call obtener_seccion_materia(?,?)', 
-    [materia, seccion]);
+    [req.params.materia, req.params.seccion]);
     res.json(seccion_materia);
   }
 
@@ -176,10 +175,8 @@ class ApiController {
   }
 
   public async eliminarSeccionMateria(req: Request, res: Response) {
-    const materia = req.params.materia;
-    const seccion = req.params.seccion;
     const seccion_materia = await pool.query('call borrar_seccion_materia(?,?)', 
-    [materia, seccion]);
+    [req.params.materia, req.params.seccion]);
     res.json(seccion_materia);
   }
 
