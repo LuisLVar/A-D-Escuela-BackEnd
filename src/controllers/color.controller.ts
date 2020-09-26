@@ -9,8 +9,8 @@ class ColorController {
   }
 
   public async obtenerColor(req: Request, res: Response) {
-    const {id} = req.params;
-    const color = await pool.query('call obtener_color(?)',[id]);
+    const color = await pool.query('call obtener_color(?)',
+    [req.params.id]);
     res.json(color);
   }
 
@@ -20,13 +20,14 @@ class ColorController {
   }
     
   public async actualizarColor(req: Request, res: Response) {
-    const color = await pool.query('call actualizar_color(?, ?, ?)',[req.body.color, req.body.nombre, req.body.significado]);
+    const color = await pool.query('call actualizar_color(?, ?, ?)',
+    [req.body.color, req.body.nombre, req.body.significado]);
     res.json(color);
   }
 
   public async eliminarColor(req: Request, res: Response) {
-    const {id} = req.params;
-    const color = await pool.query('call eliminar_color(?)',[id]);
+    const color = await pool.query('call eliminar_color(?)',
+    [req.params.id]);
     res.json(color);
   }
 
