@@ -66,19 +66,19 @@ class ApiRoutes{
         this.router.put('/colores', colorController.actualizarColor);
         this.router.get('/colores/:id', colorController.obtenerColor); 
         this.router.get('/colores/', colorController.obtenerColores);
-        this.router.delete('/colores:id', colorController.eliminarColor); 
+        this.router.delete('/colores/:id', colorController.eliminarColor); 
 
         //Aspecto
         this.router.post('/aspectos', aspectoController.insertarAspecto);
         this.router.put('/aspectos', aspectoController.actualizarAspecto);
         this.router.get('/aspectos/:id', aspectoController.obtenerAspecto); 
         this.router.get('/aspectos/', aspectoController.obtenerAspectos);
-        this.router.delete('/aspectos:id', aspectoController.eliminarAspecto);
+        this.router.delete('/aspectos/:id', aspectoController.eliminarAspecto);
 
         //Inscripcion
         this.router.get('/inscripciones/:alumno&:seccion', inscripcionController.obtenerInscripcion);
-        this.router.get('/inscripciones/', inscripcionController.obtenerInscripciones);
-        this.router.post('/inscripciones/', inscripcionController.insertarInscripcion);
+        this.router.get('/inscripciones', inscripcionController.obtenerInscripciones);
+        this.router.post('/inscripciones', inscripcionController.insertarInscripcion);
         this.router.delete('/inscripciones/:alumno&:seccion', inscripcionController.eliminarInscripcion);
 
     }
