@@ -21,8 +21,7 @@ class AspectoController {
   }
     
   public async actualizarAspecto(req: Request, res: Response) {
-    const aspecto = await pool.query('call actualizar_aspecto(?, ?)',
-    [req.body.aspecto, req.body.nombre]);
+    const aspecto = await pool.query('call actualizar_aspecto(?, ?)',[req.body.aspecto, req.body.nombre]);
     res.json(aspecto);
   }
 
