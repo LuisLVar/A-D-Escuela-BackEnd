@@ -80,6 +80,8 @@ class ApiRoutes{
         this.router.get('/inscripciones', inscripcionController.obtenerInscripciones);
         this.router.post('/inscripciones', inscripcionController.insertarInscripcion);
         this.router.delete('/inscripciones/:alumno&:seccion', inscripcionController.eliminarInscripcion);
+        //Inscripcion - Bloque 
+        this.router.get('/inscripciones/alumnosBloque/:seccion&:bloque', inscripcionController.obtenerAlumnosSeccionBloque);
 
     }
 

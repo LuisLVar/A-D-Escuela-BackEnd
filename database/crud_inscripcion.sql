@@ -24,7 +24,7 @@ BEGIN
   SET existe_alumno = 1;
  END IF;
 
- IF( SELECT inscripcion FROM inscripcion WHERE inscripcion_alumno = p_inscripcion_alumno AND inscripcion_seccion = p_inscripcion_seccion) IS NULL THEN
+ IF( SELECT inscripcion_alumno FROM inscripcion WHERE inscripcion_alumno = p_inscripcion_alumno AND inscripcion_seccion = p_inscripcion_seccion) IS NULL THEN
    SET existe = 0;
  ELSE 
   SET existe = 1;
@@ -34,8 +34,8 @@ BEGIN
   SELECT * FROM mensaje WHERE codigo = 501;
  ELSE
   IF existe_alumno AND existe_seccion THEN
-   INSERT INTO  inscripcion (inscripcion_seccion, inscripcion_alumno) 
-    VALUES (p_inscripcion_seccion, p_inscripcion_alumno);
+   INSERT INTO  inscripcion
+    VALUES (CURDATE(), p_inscripcion_seccion, p_inscripcion_alumno);
    SELECT * FROM mensaje WHERE codigo = 200;
   ELSE
    SELECT * FROM mensaje WHERE codigo = 400;
@@ -55,7 +55,7 @@ CREATE PROCEDURE borrar_inscripcion (
 BEGIN
  DECLARE existe INT DEFAULT 0;
  
- IF( SELECT inscripcion FROM inscripcion WHERE inscripcion_alumno = p_inscripcion_alumno AND inscripcion_seccion = p_inscripcion_seccion) IS NULL THEN
+ IF( SELECT inscripcion_alumno FROM inscripcion WHERE inscripcion_alumno = p_inscripcion_alumno AND inscripcion_seccion = p_inscripcion_seccion) IS NULL THEN
    SET existe = 0;
  ELSE 
   SET existe = 1;
@@ -83,7 +83,7 @@ CREATE PROCEDURE obtener_inscripcion (
 BEGIN
  DECLARE existe INT DEFAULT 0;
  
- IF( SELECT inscripcion FROM inscripcion WHERE inscripcion_alumno = p_inscripcion_alumno AND inscripcion_seccion = p_inscripcion_seccion) IS NULL THEN
+ IF( SELECT inscripcion_alumno FROM inscripcion WHERE inscripcion_alumno = p_inscripcion_alumno AND inscripcion_seccion = p_inscripcion_seccion) IS NULL THEN
    SET existe = 0;
  ELSE 
   SET existe = 1;

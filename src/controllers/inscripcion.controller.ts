@@ -4,14 +4,28 @@ import pool from '../database';
 class InscripcionController {
 
   public async insertarInscripcion(req: Request, res: Response) {
-    const inscripcion = await pool.query('call insertar_inscripcion(?, ?)', 
-    [req.params.seccion, req.params.alumno]);        
+    const inscripcion = await pool.query('call insertar_inscripcion(?, ?)',
+      [req.params.seccion, req.params.alumno]);
+
+    //Bloque
+    await pool.query(`call inscripcion_bloque(?, ?, 1)`,
+      [req.params.seccion, req.params.alumno]);
+
+    await pool.query(`call inscripcion_bloque(?, ?, 2)`,
+      [req.params.seccion, req.params.alumno]);
+
+    await pool.query(`call inscripcion_bloque(?, ?, 3)`,
+      [req.params.seccion, req.params.alumno]);
+
+    await pool.query(`call inscripcion_bloque(?, ?, 4)`,
+      [req.params.seccion, req.params.alumno]);
+
     res.json(inscripcion);
   }
 
   public async obtenerInscripcion(req: Request, res: Response) {
-    const inscripcion = await pool.query('call obtener_inscripcion(?,?)', 
-    [req.params.seccion, req.params.alumno]);
+    const inscripcion = await pool.query('call obtener_inscripcion(?,?)',
+      [req.params.seccion, req.params.alumno]);
     res.json(inscripcion);
   }
 
@@ -21,8 +35,14 @@ class InscripcionController {
   }
 
   public async eliminarInscripcion(req: Request, res: Response) {
-    const inscripcion = await pool.query('call borrar_inscripcion(?,?)', 
-    [req.params.seccion, req.params.alumno]);
+    const inscripcion = await pool.query('call borrar_inscripcion(?,?)',
+      [req.params.seccion, req.params.alumno]);
+    res.json(inscripcion);
+  }
+
+  public async obtenerAlumnosSeccionBloque(req: Request, res: Response) {
+    const inscripcion = await pool.query('call listar_grado_bloque(?,?)',
+      [req.params.seccion, req.params.bloque]);
     res.json(inscripcion);
   }
 
