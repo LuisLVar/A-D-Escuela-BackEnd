@@ -5,20 +5,20 @@ class InscripcionController {
 
   public async insertarInscripcion(req: Request, res: Response) {
     const inscripcion = await pool.query('call insertar_inscripcion(?, ?)',
-      [req.params.seccion, req.params.alumno]);
+      [req.body.seccion, req.body.alumno]);
 
     //Bloque
     await pool.query(`call inscripcion_bloque(?, ?, 1)`,
-      [req.params.seccion, req.params.alumno]);
+      [req.body.seccion, req.body.alumno]);
 
     await pool.query(`call inscripcion_bloque(?, ?, 2)`,
-      [req.params.seccion, req.params.alumno]);
+      [req.body.seccion, req.body.alumno]);
 
     await pool.query(`call inscripcion_bloque(?, ?, 3)`,
-      [req.params.seccion, req.params.alumno]);
+      [req.body.seccion, req.body.alumno]);
 
     await pool.query(`call inscripcion_bloque(?, ?, 4)`,
-      [req.params.seccion, req.params.alumno]);
+      [req.body.seccion, req.body.alumno]);
 
     res.json(inscripcion);
   }
