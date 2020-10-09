@@ -77,7 +77,7 @@ USE control_notas
 DELIMITER $$
 CREATE PROCEDURE eliminar_aspecto ( p_aspecto INT )
 BEGIN
- IF (SELECT aspecto FROM aspecto WHERE aspecto = aspecto) IS NOT NULL THEN
+ IF (SELECT aspecto FROM aspecto WHERE aspecto = p_aspecto) IS NOT NULL THEN
   DELETE FROM aspecto 
   WHERE p_aspecto = aspecto;
   SELECT * FROM mensaje WHERE codigo = 200;
