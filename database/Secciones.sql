@@ -24,7 +24,17 @@ DELIMITER $$
 CREATE PROCEDURE obtener_seccion(p_seccion INT)
 BEGIN
     IF (SELECT seccion FROM seccion WHERE seccion = p_seccion) IS NOT NULL THEN
-        SELECT * FROM seccion WHERE seccion = p_seccion;
+        -- SELECT * FROM seccion WHERE seccion = p_seccion;
+        SELECT s.seccion as idSeccion, s.nombre as nombreSeccion, g.grado as idGrado, g.nombre_grado as nombreGrado, p.personal as idPersonal, p.nombre as nombrePersonal,
+        p.apellido as apellidoPersonal, c.ciclo as idCiclo, c.anio as anio
+        FROM seccion s 
+        INNER JOIN grado g 
+        ON s.seccion_grado = g.grado
+        INNER JOIN personal p 
+        ON s.seccion_personal = p.personal
+        INNER JOIN ciclo c 
+        ON s.seccion_ciclo = c.ciclo
+        WHERE s.seccion = p_seccion;
     ELSE
         SELECT codigo, mensaje FROM mensaje WHERE codigo = 400;
     END IF; 
