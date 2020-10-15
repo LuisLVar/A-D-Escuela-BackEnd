@@ -161,7 +161,7 @@ CREATE TABLE asignacion (
     as_ib_inscripcion_alumno INTEGER NOT NULL,
     as_ib_bloque INTEGER NOT NULL,
     as_materia INTEGER NOT NULL,
-    as_color INTEGER NOT NULL,
+    as_color INTEGER,
     CONSTRAINT asignacion_pk PRIMARY KEY (as_ib_inscripcion_seccion , as_ib_inscripcion_alumno , as_ib_bloque , as_materia),
     CONSTRAINT as_ib_inscripcion_seccion_fk FOREIGN KEY (as_ib_inscripcion_seccion)
         REFERENCES inscripcion_bloque (ib_inscripcion_seccion)
