@@ -6,6 +6,7 @@ import { seccionController} from '../controllers/seccion.controller';
 import { colorController } from '../controllers/color.controller';
 import { aspectoController } from '../controllers/aspecto.controller';
 import { inscripcionController } from '../controllers/inscripcion.controller';
+import { notasController } from '../controllers/notasController';
 
 class ApiRoutes{
     public router: Router = Router();
@@ -82,6 +83,12 @@ class ApiRoutes{
         this.router.delete('/inscripciones/:alumno&:seccion', inscripcionController.eliminarInscripcion);
         //Inscripcion - Bloque 
         this.router.get('/inscripciones/alumnosBloque/:seccion&:bloque', inscripcionController.obtenerAlumnosSeccionBloque);
+
+        //Mostrar Notas
+        this.router.get('/notas/grupal/:seccion&:bloque&:materia', notasController.notasGrupal);
+        this.router.get('/notas/individual/materia/:seccion&:bloque&:materia&:alumno', notasController.notasGrupal);
+        this.router.get('/notas/individual/:seccion&:bloque&:alumno', notasController.notasGrupal);
+
 
     }
 
