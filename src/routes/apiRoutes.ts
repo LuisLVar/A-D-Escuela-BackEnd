@@ -86,8 +86,8 @@ class ApiRoutes{
 
         //Mostrar Notas
         this.router.get('/notas/grupal/:seccion&:bloque&:materia', notasController.notasGrupal);
-        this.router.get('/notas/individual/materia/:seccion&:bloque&:materia&:alumno', notasController.notasGrupal);
-        this.router.get('/notas/individual/:seccion&:bloque&:alumno', notasController.notasGrupal);
+        this.router.get('/notas/individual/materia/:seccion&:bloque&:materia&:alumno', notasController.notasIndividualMateria);
+        this.router.get('/notas/individual/:seccion&:bloque&:alumno', notasController.notasIndividual);
 
 
     }
