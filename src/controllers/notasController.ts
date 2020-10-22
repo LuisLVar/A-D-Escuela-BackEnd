@@ -16,7 +16,7 @@ class NotasController {
   }
 
   public async notasIndividualMateria(req: Request, res: Response) {
-    const notas = await pool.query('call notas_grupal(?, ?, ?, ?)',
+    const notas = await pool.query('call notas_ind_mat(?, ?, ?, ?)',
       [req.params.seccion, req.params.bloque, req.params.materia, req.params.alumno]);
     res.json(notas);
   }
