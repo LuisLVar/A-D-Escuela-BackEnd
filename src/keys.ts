@@ -1,9 +1,9 @@
-export default{//encargado de la configuracion de db
+export default {//encargado de la configuracion de db
 
-  database:{
-      host: 'localhost',
-      user: process.env.USER_DB,
-      password: process.env.PWD_DB,
-      database: 'control_notas'
+  database: {
+    host: 'ayd1-p3.ce8ekhcwshe3.us-west-2.rds.amazonaws.com',
+    user: 'admin',
+    password: 'ayd123456789',
+    database: 'ayd1_practica3'
   }
 }
