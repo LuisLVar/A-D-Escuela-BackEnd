@@ -180,6 +180,18 @@ class ApiController {
     res.json(seccion_materia);
   }
 
+  //Login
+  public async login(req: Request, res: Response) {
+    const data = await pool.query(`SELECT p.personal, p.nombre, p.apellido,
+    p.direccion, p.telefono, p.estado, p.cui,
+    p.personal_escuela, p.personal_tipo_personal as idTipo, t.tipo_personal as Tipo FROM personal p
+    INNER JOIN tipo_personal t
+    ON p.personal_tipo_personal = t.tipo_personal
+    where p.usuario = ? and p.contrasenia = ?`, [req.body.user, req.body.pwd]);
+    
+    res.json(data);
+  }
+
 }
 
 export const apiController = new ApiController();

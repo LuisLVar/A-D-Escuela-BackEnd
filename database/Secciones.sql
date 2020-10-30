@@ -76,3 +76,16 @@ BEGIN
     END IF; 
 END
 $$
+
+
+SELECT s.seccion as idSeccion, s.nombre as nombreSeccion, g.grado as idGrado,
+ g.nombre_grado as nombreGrado, p.personal as idPersonal, p.nombre as nombrePersonal,
+p.apellido as apellidoPersonal, c.ciclo as idCiclo, c.anio as anio
+FROM seccion s 
+INNER JOIN grado g 
+ON s.seccion_grado = g.grado
+INNER JOIN personal p 
+ON s.seccion_personal = p.personal
+INNER JOIN ciclo c 
+ON s.seccion_ciclo = c.ciclo
+WHERE p.personal = "" and c.anio = "";

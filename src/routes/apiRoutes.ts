@@ -48,6 +48,7 @@ class ApiRoutes{
         this.router.post('/secciones', seccionController.create);
         this.router.put('/secciones', seccionController.update);
         this.router.delete('/secciones/:id', seccionController.delete);
+        this.router.post('/secciones/personal', seccionController.seccionPersonal);
 
         //Grados
         this.router.get('/grados', apiController.getGrados);
@@ -88,6 +89,10 @@ class ApiRoutes{
         this.router.get('/notas/grupal/:seccion&:bloque&:materia', notasController.notasGrupal);
         this.router.get('/notas/individual/:seccion&:bloque&:alumno', notasController.notasIndividual);
         this.router.get('/notas/individual/materia/:seccion&:bloque&:materia&:alumno', notasController.notasIndividualMateria);
+
+        //Login
+        this.router.post('/login', apiController.login);
+
 
 
     }
