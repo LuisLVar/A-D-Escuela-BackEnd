@@ -1,4 +1,16 @@
+USE control_notas;
+
 CALL insertar_materia('Matematica', 'Contenido Original');
+CALL insertar_materia('Lenguaje', 'Contenido Original');
+CALL insertar_materia('Ciencias Naturales', 'Contenido Original');
+
+CALL insertar_ciclo(2021);
+insert into escuela(nombre_oficial, direccion, telefono) values("MUHG", "Ciudad", "55555555");
+CALL insertar_grado("Sexto");
+
+CALL insertar_personal("Juanita", "Perez", "Ciudad", "55555555", 1, 1234123450101, 1, 1, "juanita", "123456789");
+CALL insertar_personal()
+
 CALL obtener_materia(1);
 CALL obtener_materia(2);
 CALL actualizar_materia(1, 'Social', 'Contenido nuevito');

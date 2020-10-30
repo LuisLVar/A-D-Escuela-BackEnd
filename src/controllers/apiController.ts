@@ -170,7 +170,7 @@ class ApiController {
   }
 
   public async obtenerSeccionMaterias(req: Request, res: Response) {
-    const seccion_materia = await pool.query('select * from seccion_materia');
+    const seccion_materia = await pool.query('select materia, nombre, contenido from materia inner join seccion_materia where seccion_materia_materia = materia and seccion_materia_seccion = ?', req.params.seccion);
     res.json(seccion_materia);
   }
 
