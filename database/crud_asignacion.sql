@@ -3,7 +3,7 @@
 # PROCEDURE insertar_calificacion
 USE control_notas;
 DELIMITER $$
-CREATE PROCEDURE registrar_calificacion (
+CREATE PROCEDURE insertar_calificacion (
     p_as_ib_inscripcion_seccion INTEGER,
     p_as_ib_inscripcion_alumno INTEGER,
     p_as_ib_bloque INTEGER,
@@ -119,7 +119,7 @@ BEGIN
 
  IF existe THEN
   IF p_nombre IS NOT NULL THEN
-   UPDATE color
+   UPDATE asignacion
     SET 
 	 zona = p_zona,
 	 proyecto = p_proyecto,
