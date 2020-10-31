@@ -7,6 +7,7 @@ import { colorController } from '../controllers/color.controller';
 import { aspectoController } from '../controllers/aspecto.controller';
 import { inscripcionController } from '../controllers/inscripcion.controller';
 import { notasController } from '../controllers/notasController';
+import { calificacionController } from '../controllers/asignacion.controller';
 
 class ApiRoutes{
     public router: Router = Router();
@@ -93,8 +94,11 @@ class ApiRoutes{
         //Login
         this.router.post('/login', apiController.login);
 
-
-
+        //Calificaciones
+        this.router.post('/calificacion', calificacionController.insertarCalificacion);
+        this.router.put('/calificacion', calificacionController.actualizarCalificacion);
+        this.router.get('/calificacion/:seccion&:alumno&:bloque&:materia', calificacionController.obtenerCalificacion); 
+        this.router.get('/calificacion/', calificacionController.obtenerCalificaciones);
     }
 
 }
