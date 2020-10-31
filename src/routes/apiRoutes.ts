@@ -9,6 +9,8 @@ import { inscripcionController } from '../controllers/inscripcion.controller';
 import { notasController } from '../controllers/notasController';
 import { calificacionController } from '../controllers/asignacion.controller';
 import { calificacion_aspectoController } from '../controllers/r_aspectos.controller';
+import { conductaController } from '../controllers/calificaciones.controller';
+
 class ApiRoutes{
     public router: Router = Router();
 
@@ -105,6 +107,11 @@ class ApiRoutes{
         this.router.put('/calificacion_aspecto', calificacion_aspectoController.actualizarCalificacionAspecto);
         this.router.get('/calificacion_aspecto/:seccion&:alumno&:bloque&:aspecto', calificacion_aspectoController.obtenerCalificacionAspecto); 
         this.router.get('/calificacion_aspecto/', calificacion_aspectoController.obtenerCalificacionesAspecto);
+
+
+        //Calificaciones_Aspectos
+        this.router.get('/tab_ind_cond_con_nota', conductaController.Tabla_Individual_Conducta_Con_Nota);
+        this.router.get('/tab_ind_cond_sin_nota', conductaController.Tabla_Individual_Conducta_Sin_Nota);
 
     }
 
